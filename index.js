@@ -3,6 +3,8 @@ var http = require("http");
 //create a server object:
 http
   .createServer(function (req, res) {
+    const hostLocation = req?.headers?.host;
+
     // https://frontendguruji.com/blog/how-to-parse-post-request-in-node-js-without-expressjs-body-parser/
     let chunks = [];
     // 'data' event is emitted on every chunk received
@@ -37,7 +39,7 @@ http
         console.error("ERROR: " + dataObj.error);
       }
 
-      res.write("You log is displayed @ https://tfh4q6-8080.csb.app/"); //write a response to the client
+      res.write("You log is displayed @ " + hostLocation); //write a response to the client
       res.end(); //end the response
 
       // console.log(">>>>> all set");
